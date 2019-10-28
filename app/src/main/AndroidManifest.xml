@@ -3,6 +3,7 @@
     package="com.cetnaline.myapplication">
 
     <uses-permission android:name="android.permission.READ_CLIPBOARD_IN_BACKGROUND" />
+    <!--<permission android:name="com.cetnaline.myapplication.PROVIDER"/>-->
 
     <application
         android:allowBackup="true"
@@ -26,6 +27,12 @@
         <service
             android:name=".BookService"
             android:process=".bookservice" />
+        
+        <provider
+            android:authorities="com.cetnaline.myapplication.PROVIDER"
+            android:permission="com.cetnaline.myapplication.PROVIDER"
+            android:name=".BookProvider"
+            android:process=".provider"/>
     </application>
 
 </manifest>
