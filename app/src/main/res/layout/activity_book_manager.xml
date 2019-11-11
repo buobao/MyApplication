@@ -12,4 +12,10 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
 
+    <com.cetnaline.myapplication.CircleView
+        android:padding="20dp"
+        app:circle_color="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

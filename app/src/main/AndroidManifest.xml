@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.cetnaline.myapplication">
-
-    <uses-permission android:name="android.permission.READ_CLIPBOARD_IN_BACKGROUND" />
-    <!--<permission android:name="com.cetnaline.myapplication.PROVIDER"/>-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission
+        android:name="android.permission.INTERNAL_SYSTEM_WINDOW"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_CLIPBOARD_IN_BACKGROUND" /> <!-- <permission android:name="com.cetnaline.myapplication.PROVIDER"/> -->
+    <permission android:name="android.permission.INTERNET" />
+    <permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BookManagerActivity"></activity>
+        <activity android:name=".HorizontalScrollActivity">
+        </activity>
+
+        <service
+            android:name=".TCPService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=".tcpservice" />
+
+        <activity android:name=".BookManagerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +42,24 @@
         <service
             android:name=".BookService"
             android:process=".bookservice" />
-        
+
         <provider
+            android:name=".BookProvider"
             android:authorities="com.cetnaline.myapplication.PROVIDER"
             android:permission="com.cetnaline.myapplication.PROVIDER"
-            android:name=".BookProvider"
-            android:process=".provider"/>
+            android:process=".provider" />
+
+
+        <receiver android:name=".MyAppWidgetProvider">
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info"/>
+            <intent-filter>
+                <action android:name="com.cetnaline.myapplication.CLICK"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+        </receiver>
+
     </application>
 
 </manifest>
