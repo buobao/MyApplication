@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.cetnaline.myapplication">
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
-    <uses-permission
-        android:name="android.permission.INTERNAL_SYSTEM_WINDOW"
-        tools:ignore="ProtectedPermissions" />
+    <!--<uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />-->
+    <!--<uses-permission-->
+        <!--android:name="android.permission.INTERNAL_SYSTEM_WINDOW"-->
+        <!--tools:ignore="ProtectedPermissions" />-->
     <uses-permission android:name="android.permission.READ_CLIPBOARD_IN_BACKGROUND" /> <!-- <permission android:name="com.cetnaline.myapplication.PROVIDER"/> -->
     <permission android:name="android.permission.INTERNET" />
     <permission android:name="android.permission.ACCESS_NETWORK_STATE" />

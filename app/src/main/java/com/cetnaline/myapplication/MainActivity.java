@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     Button button = new Button(MainActivity.this);
                     button.setText("button");
                     WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
-                            WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.TYPE_APPLICATION_PANEL,
+                            WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG,
                             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
                                     WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, PixelFormat.TRANSPARENT);
 
