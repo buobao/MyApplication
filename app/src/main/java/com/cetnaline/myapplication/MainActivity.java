@@ -9,6 +9,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Build;
@@ -26,6 +27,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -111,18 +113,23 @@ public class MainActivity extends AppCompatActivity {
                     intent2.setData(Uri.parse("package:" + getPackageName()));
                     startActivityForResult(intent2, 1);
                 } else {
+                    LinearLayout linearLayout = new LinearLayout(MainActivity.this);
+                    linearLayout.setOrientation(LinearLayout.VERTICAL);
+                    linearLayout.setBackgroundColor(Color.TRANSPARENT);
+
                     Button button = new Button(MainActivity.this);
                     button.setText("button");
-                    WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
-                            WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG,
+                    linearLayout.addView(button);
+                    WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(WindowManager.LayoutParams.MATCH_PARENT,
+                            WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG,
                             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
                                     WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, PixelFormat.TRANSPARENT);
 
                     layoutParams.gravity = Gravity.LEFT | Gravity.TOP;
-                    layoutParams.x = 100;
-                    layoutParams.y = 300;
+                    layoutParams.x = 0;
+                    layoutParams.y = 0;
 
-                    ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).addView(button, layoutParams);
+                    ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).addView(linearLayout, layoutParams);
 
 
 //            ImageView callHead = new ImageView(this);
