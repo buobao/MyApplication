@@ -9,6 +9,14 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.IOError;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class BitmapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,4 +54,63 @@ public class BitmapActivity extends AppCompatActivity {
 
         return inSamleSize;
     }
+
+
+    private boolean downloadUrlToStream(String urlString, OutputStream outputStream) {
+        HttpURLConnection urlConnection = null;
+        BufferedOutputStream out = null;
+        BufferedInputStream in = null;
+
+        try {
+            final URL url = new URL(urlString);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            in = new BufferedInputStream(urlConnection.getInputStream());
+            out = new BufferedOutputStream(outputStream);
+
+            int b;
+
+            while ((b=in.read())!=-1) {
+                out.write(b);
+            }
+
+            out.close();
+            in.close();
+            return true;
+        } catch (IOException e) {
+
+        } finally {
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+        }
+        return false;
+    }
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
